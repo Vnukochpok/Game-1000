@@ -140,3 +140,33 @@ def classic(arr):
         if item in target_digits:
             reroll_dice += 1
     return [score, reroll_dice]
+
+
+def checkscore(arr):
+    m_s = m_strit(arr)
+    b_s = b_strit(arr)
+    five = fivele(arr)
+    four = fourle(arr)
+    three = triple(arr)
+    if m_s[0] != 0:
+        score = 125
+        return score
+    elif b_s[0] != 0:
+        score = 250
+        return score
+    elif five[0] != 0:
+        score = five
+        return score
+    if four[0] != 0:
+        score = four
+        return score
+    elif three[0] != 0:
+        score = three
+        return score
+    else:
+        score = classic(arr)
+        return score
+
+
+print(checkscore(s))
+
