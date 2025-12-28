@@ -1,3 +1,19 @@
+import random
+
+
+def throw(x):
+    i = 1
+    array = []
+    while i <= x:
+        kubik = random.randint(1, 6)
+        array.append(kubik)
+        i += 1
+    return array
+
+
+s = throw(5)
+print(s)
+
 def m_strit(arr):
     arr.sort()
     sec_arr = [1, 2, 3, 4, 5]
