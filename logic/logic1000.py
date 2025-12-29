@@ -11,8 +11,8 @@ def throw(x):
     return array
 
 
-s = throw(5)
-print(s)
+#s = throw(5)
+#print(s)
 
 def m_strit(arr):
     arr.sort()
@@ -142,7 +142,7 @@ def classic(arr):
     return [score, reroll_dice]
 
 
-def checkscore(arr):
+def check_score(arr):
     m_s = m_strit(arr)
     b_s = b_strit(arr)
     five = fivele(arr)
@@ -167,6 +167,14 @@ def checkscore(arr):
         score = classic(arr)
         return score
 
+def get_normal_score(arr):
+    if isinstance(arr[1], list):
+        second_list = arr[1]
+        score1 = arr[0]
+        score2 = second_list[0]
+        reroll = second_list[1]
+        return [score1+score2, reroll]
+    else:
+        return arr
 
-print(checkscore(s))
-
+#print(get_normal_score(check_score(s)))
