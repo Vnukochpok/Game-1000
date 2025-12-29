@@ -149,10 +149,10 @@ def check_score(arr):
     four = fourle(arr)
     three = triple(arr)
     if m_s[0] != 0:
-        score = 125
+        score = [125,0]
         return score
     elif b_s[0] != 0:
-        score = 250
+        score = [250,0]
         return score
     elif five[0] != 0:
         score = five
