@@ -168,13 +168,14 @@ def check_score(arr):
         return score
 
 def get_normal_score(arr):
-    if isinstance(arr[1], list):
-        second_list = arr[1]
-        score1 = arr[0]
+    new_arr = check_score(arr)
+    if isinstance(new_arr[1], list):
+        second_list = new_arr[1]
+        score1 = new_arr[0]
         score2 = second_list[0]
         reroll = second_list[1]
         return [score1+score2, reroll]
     else:
-        return arr
+        return new_arr
 
-#print(get_normal_score(check_score(s)))
+#print(get_normal_score(s))
