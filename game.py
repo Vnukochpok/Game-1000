@@ -1,7 +1,9 @@
-from logic.logic1000 import throw, check_score, get_normal_score
+from logic.logic1000 import throw, get_normal_score
 
 play = True
 def game(player1, player2):
+    total_score_p1 = 0
+    total_score_p2 = 0
     while play:
         log_p1 = player1
         log_p2 = player2
@@ -10,21 +12,20 @@ def game(player1, player2):
         hod_p2 = False
 
         k = 5
-        total_score_p1 = 0
-        total_score_p2 = 0
+
         while hod_p1:
+            print("---------ХОД ИГРОКА №1---------")
             throwing = throw(k)
             print(throwing)
-            checking_score = check_score(throwing)
-            list_res = get_normal_score(checking_score)
+            list_res = get_normal_score(throwing)
             print(list_res)
             score = list_res[0]
             reroll_dice = list_res[1]
 
             #[0, 5] [0, 2]
             if score == 0 and (reroll_dice == 5 or reroll_dice < 5):
-                print("Ничего не выпало, ход передается следующему игроку\n ---------------------------------")
-                print(total_score_p1)
+                print(f"\n{total_score_p1} - счет")
+                print("\n\n\nНичего не выпало, ход передается следующему игроку\n ---------------------------------")
                 hod_p1 = False
                 hod_p2 = True
                 break
@@ -36,14 +37,14 @@ def game(player1, player2):
                 if decis == 'Y':
                     k = reroll_dice
                 elif decis == 'N':
-                    print("Ход передается следующему игроку\n ---------------------------------")
-                    print(total_score_p1)
+                    print(f"\n{total_score_p1} - счет")
+                    print("\n\n\nХод передается следующему игроку\n ---------------------------------")
                     hod_p1 = False
                     hod_p2 = True
                     break
                 else:
                     print("Wrong answer >:(")
-                    break
+                    pass
 
             #[55, 0]
             elif score != 0 and reroll_dice == 0:
@@ -53,31 +54,30 @@ def game(player1, player2):
                     k = 5
 
                 elif decis == 'N':
-                    print("Ход передается следующему игроку\n ---------------------------------")
-                    print(total_score_p1)
+                    print(f"\n{total_score_p1} - счет")
+                    print("\n\n\nХод передается следующему игроку\n ---------------------------------")
                     hod_p1 = False
                     hod_p2 = True
                     break
 
                 else:
                     print("Wrong answer >:(")
-                    break
+                    pass
 
             else:
                 print("Ошибка")
 
 
         while hod_p2:
+            print("---------ХОД ИГРОКА №2---------")
             throwing = throw(k)
-            checking_score = check_score(throwing)
-            list_res = get_normal_score(checking_score)
-
+            list_res = get_normal_score(throwing)
             score = list_res[0]
             reroll_dice = list_res[1]
 
             if score == 0 and (reroll_dice == 5 or reroll_dice < 5):
-                print("Ничего не выпало, ход передается следующему игроку\n ---------------------------------")
-                print(total_score_p2)
+                print(f"\n{total_score_p2} - счет")
+                print("\n\n\nНичего не выпало, ход передается следующему игроку\n ---------------------------------")
                 hod_p2 = False
                 hod_p1 = True
                 break
@@ -88,8 +88,8 @@ def game(player1, player2):
                 if decis == 'Y':
                     k = reroll_dice
                 elif decis == 'N':
-                    print("Ход передается следующему игроку\n ---------------------------------")
-                    print(total_score_p2)
+                    print(f"\n{total_score_p2} - счет")
+                    print("\n\n\nХод передается следующему игроку\n ---------------------------------")
                     hod_p2 = False
                     hod_p1 = True
                     break
@@ -104,8 +104,9 @@ def game(player1, player2):
                     k = 5
 
                 elif decis == 'N':
-                    print("Ход передается следующему игроку\n ---------------------------------")
-                    print(total_score_p2)
+                    print(f"\n{total_score_p2} - счет")
+                    print("\n\n\nХод передается следующему игроку\n ---------------------------------")
+
                     hod_p2 = False
                     hod_p1 = True
                     break
